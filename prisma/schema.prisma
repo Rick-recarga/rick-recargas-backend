@@ -2,11 +2,9 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
 generator client {
   provider = "prisma-client-js"
 }
-
 model Topup {
   id           String   @id @default(cuid())
   msisdn       String
@@ -18,7 +16,6 @@ model Topup {
   errorMessage String?
   createdAt    DateTime @default(now())
 }
-
 model Payment {
   id          String   @id @default(cuid())
   amount      Int
