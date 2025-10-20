@@ -1,29 +1,35 @@
-datasource db { provider = "postgresql"; url = env("DATABASE_URL") }
-generator client { provider = "prisma-client-js" }
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
 
 model Topup {
-  id          String   @id @default(cuid())
-  msisdn      String
-  operator    String
-  amount      Int
-  status      String
-  externalRef String?
-  providerRef String?
+  id           String   @id @default(cuid())
+  msisdn       String
+  operator     String
+  amount       Int
+  status       String
+  externalRef  String?
+  providerRef  String?
   errorMessage String?
-  createdAt   DateTime @default(now())
+  createdAt    DateTime @default(now())
 }
 
 model Payment {
-  id         String   @id @default(cuid())
-  amount     Int
-  method     String
-  status     String   @default("pending")
-  msisdn     String
-  operator   String
-  gatewayId  String?
-  gatewayRaw Json?
-  provider   String?
-  paidAt     DateTime?
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id          String   @id @default(cuid())
+  amount      Int
+  method      String
+  status      String   @default("pending")
+  msisdn      String
+  operator    String
+  gatewayId   String?
+  gatewayRaw  Json?
+  provider    String?
+  paidAt      DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
